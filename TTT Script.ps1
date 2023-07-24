@@ -46,5 +46,6 @@ do {
   }
  } until ($GameOver -eq $true)
  DisplayBoard -Board $TicTacToeBoard
- Write-Host "Player $CurrentPlayer, you are the winner"
+ if ($Draw -eq $false) {Write-Host "Player $CurrentPlayer, you are the winner"}
+ else {Write-Host "Nobody won this round, it's a draw!"}
 } while ($keepPlaying)
