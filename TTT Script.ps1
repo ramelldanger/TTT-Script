@@ -17,8 +17,6 @@ do {
     DisplayBoard -Board $TicTacToeBoard
   do {
      $choice = Read-Host -Prompt "Player $CurrentPlayer, please choose your spot"
-     # Check for wrong reasons (not 1-9, or already chosen)
-     # If wrong, ask again
      $GoodSpots = @(1,2,3,4,5,6,7,8,9)
      if ($TicTacToeBoard -contains $choice -and $GoodSpots -contains $choice) {$TryAgain = $false}
      else {$tryAgain = $true}
@@ -49,5 +47,4 @@ do {
  } until ($GameOver -eq $true)
  DisplayBoard -Board $TicTacToeBoard
  Write-Host "$CurrentPlayer, you are the winner"
- # Check for play again and then reset board
 } while ($keepPlaying)
