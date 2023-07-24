@@ -46,5 +46,5 @@ do {
   }
  } until ($GameOver -eq $true)
  DisplayBoard -Board $TicTacToeBoard
- Write-Host "$CurrentPlayer, you are the winner"
+ Write-Host "Player $CurrentPlayer, you are the winner"
 } while ($keepPlaying)
