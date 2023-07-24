@@ -1,4 +1,4 @@
-﻿$CurrentPlayer = "X","O" | Get-Random
+$CurrentPlayer = "X","O" | Get-Random
 [System.Collections.arrayList]$TicTacToeBoard = @(1,2,3,4,5,6,7,8,9)
 $GameOver = $false
 $Draw = $false
@@ -27,7 +27,6 @@ do {
      else {$tryAgain = $true}
     } while ($tryAgain -eq $true) 
   $TicTacToeBoard[$choice - 1] = $CurrentPlayer
-
   $winninglines = @(
      @(0,1,2),
      @(3,4,5),
@@ -45,6 +44,10 @@ do {
             break
     }
    }
+   if ($GameOver -eq $false -and ($TicTacToeBoard | Select-Object -unique).count -eq 2) {
+        $Draw = $true
+        $Gameover = $true
+    }
    if ($Gameover -eq $false) {
         if($CurrentPlayer -eq 'X') {$CurrentPlayer = 'O'}
         else {$Currentplayer = 'X'}
@@ -53,4 +56,7 @@ do {
  DisplayBoard -Board $TicTacToeBoard
  if ($Draw -eq $false) {Write-Host "Player $CurrentPlayer, you are the winner"}
  else {Write-Host "Nobody won this round, it's a draw!"}
-} while ($keepPlaying)
+ $Again = Read-Host -Prompt "Do you want to play again' (Yes/No)"
+ if ($again -like 'y*') {$keepPlaying = $True}
+ else {$keepPlaying =$false}
+} while ($keepPlaying -eq $True)
