@@ -1,6 +1,7 @@
 ﻿$CurrentPlayer = "X","O" | Get-Random
 [System.Collections.arrayList]$TicTacToeBoard = @(1,2,3,4,5,6,7,8,9)
 $GameOver = $false
+$Draw = $false
 
 function DisplayBoard {
    param ($Board)
